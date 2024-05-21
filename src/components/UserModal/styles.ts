@@ -30,7 +30,7 @@ export const UserDetails = styled.Text`
 
 export const CloseButtonContainer = styled.View`
   align-items: center;
-  margin-top: 30px
+  margin-top: 30px;
 `;
 
 export const CloseButton = styled.Text`
@@ -38,5 +38,5 @@ export const CloseButton = styled.Text`
   font-weight: bold;
   background-color: #3498db;
   padding: 10px 20px;
-  border-radius: 5px;
+
 `;
