@@ -10,6 +10,7 @@
             "@styles/*": ["styles/*"],
             "@utils/*": ["utils/*"],
             "@interfaces/*": ["interfaces/*"],
+            "@context/*": ["context/*"],
         },
   }
 }
