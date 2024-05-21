@@ -19,6 +19,10 @@ export default function MainScreen() {
   const [genderFilter, setGenderFilter] = useState('');
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [page, setPage] = useState(1);
+  const [
+    onEndReachedCalledDuringMomentum,
+    setOnEndReachedCalledDuringMomentum,
+  ] = useState(true);
 
   useEffect(() => {
     filterUsers();
@@ -72,6 +76,14 @@ export default function MainScreen() {
     }
   };
 
+  //solução retirada de https://stackoverflow.com/questions/47910127/flatlist-calls-onendreached-when-its-rendered
+  const onEndReached = ({ distanceFromEnd }: any) => {
+    if (!onEndReachedCalledDuringMomentum) {
+      loadMoreUsers();
+      setOnEndReachedCalledDuringMomentum(true);
+    }
+  };
+
   return (
     <Container>
       <Header
@@ -91,7 +103,9 @@ export default function MainScreen() {
             </LoadMoreContainer>
           ) : null
         }
-        onEndReached={loadMoreUsers}
+        onEndReached={onEndReached}
+        onEndReachedThreshold={0.5}
+        onMomentumScrollBegin={() => setOnEndReachedCalledDuringMomentum(false)}
       />
     </Container>
   );
