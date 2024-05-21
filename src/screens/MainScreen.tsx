@@ -1,9 +1,17 @@
-import { Container, TextTeste } from './styles';
+import { useUserContext } from '@context/userContext';
+import { Container, UserList } from './styles';
+import Card from '@components/Card';
+import { User } from '@interfaces/user';
 
 export default function MainScreen() {
+  const { users } = useUserContext();
   return (
     <Container>
-      <TextTeste>Open up App.tsx to start working on your app!</TextTeste>
+      <UserList
+        data={users}
+        keyExtractor={(item: any) => item.login.uuid}
+        renderItem={({ item }: { item: User }) => <Card data={item} />}
+      />
     </Container>
   );
 }
