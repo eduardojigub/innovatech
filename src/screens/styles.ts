@@ -14,3 +14,21 @@ export const UserList = styled(FlatList).attrs({
 })`
   flex: 1;
 `;
+
+export const LoadMoreContainer = styled.View`
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+`;
+
+export const LoadMoreText = styled.Text`
+  font-size: 16px;
+  color: black;
+  margin-top: 10px;
+`;
+
+export const LoadMoreActivityIndicator = styled.ActivityIndicator`
+  margin-top: 10px;
+  color: #00008b;
+`;
