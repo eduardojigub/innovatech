@@ -10,6 +10,9 @@ import { User } from '@interfaces/user';
 
 interface IUserContext {
   users: User[];
+  currentPage: number;
+  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  setUsers: React.Dispatch<React.SetStateAction<User[]>>;
   fetchUserData: (page: number) => void;
 }
 
@@ -22,25 +25,27 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
   const fetchUserData = async (page: number) => {
     try {
       const fetchedUsers = await fetchUsers(page);
-      if (page === 1) {
-        // If fetching the first page, replace existing users
-        setUsers(fetchedUsers);
-      } else {
-        // If fetching subsequent pages, append new users to existing users
-        setUsers((prevUsers) => [...prevUsers, ...fetchedUsers]);
-      }
-      setCurrentPage(page); // Update the current page
+      setUsers((prevUsers) => [...prevUsers, ...fetchedUsers]);
+      setCurrentPage(page);
     } catch (error) {
       console.error('Error fetching users:', error);
     }
   };
 
+  // Initial fetch on mount
   useEffect(() => {
     fetchUserData(currentPage); // Fetch data for the initial page
   }, []);
-
   return (
-    <UserContext.Provider value={{ users, fetchUserData }}>
+    <UserContext.Provider
+      value={{
+        users,
+        fetchUserData,
+        currentPage,
+        setCurrentPage,
+        setUsers,
+      }}
+    >
       {children}
     </UserContext.Provider>
   );

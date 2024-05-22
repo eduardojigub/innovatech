@@ -13,20 +13,29 @@ import { User } from '@interfaces/user';
 import { fetchUsers } from '@utils/api';
 
 export default function MainScreen() {
-  const { users } = useUserContext();
+  const { users, currentPage, setCurrentPage, setUsers, fetchUserData } =
+    useUserContext();
   const [filteredUsers, setFilteredUsers] = useState<User[]>(users);
   const [nameFilter, setNameFilter] = useState('');
   const [genderFilter, setGenderFilter] = useState('');
   const [isLoadingMore, setIsLoadingMore] = useState(false);
-  const [page, setPage] = useState(1);
   const [
     onEndReachedCalledDuringMomentum,
     setOnEndReachedCalledDuringMomentum,
   ] = useState(true);
+  const [isInputFilterActive, setIsInputFilterActive] = useState(false);
 
   useEffect(() => {
     filterUsers();
   }, [users, nameFilter, genderFilter]);
+
+  useEffect(() => {
+    if (nameFilter.length > 0 || genderFilter.length > 0) {
+      setIsInputFilterActive(true);
+    } else {
+      setIsInputFilterActive(false);
+    }
+  }, [nameFilter, genderFilter]);
 
   const handleFilterName = (name: string) => {
     setNameFilter(name);
@@ -65,24 +74,26 @@ export default function MainScreen() {
     try {
       setIsLoadingMore(true);
       setTimeout(async () => {
-        const nextPageUsers = await fetchUsers(page + 1);
-        setPage(page + 1);
-        setFilteredUsers((prevUsers) => [...prevUsers, ...nextPageUsers]);
+        const nextPageUsers = await fetchUsers(currentPage + 1);
+        setCurrentPage(currentPage + 1);
+        setUsers((prevUsers) => [...prevUsers, ...nextPageUsers]);
         setIsLoadingMore(false);
-      }, 2000); // 2 seconds delay to simulate loading and achieve one of the requirements
+      }, 3000); // 3 seconds delay to simulate loading and achieve one of the requirements
     } catch (error) {
       console.error('Error fetching more users:', error);
-      setIsLoadingMore(false);
     }
   };
 
   //solução retirada de https://stackoverflow.com/questions/47910127/flatlist-calls-onendreached-when-its-rendered
-  const onEndReached = ({ distanceFromEnd }: any) => {
+  const onEndReached = () => {
     if (!onEndReachedCalledDuringMomentum) {
-      loadMoreUsers();
-      setOnEndReachedCalledDuringMomentum(true);
+      !isInputFilterActive && loadMoreUsers();
+      !isInputFilterActive && setOnEndReachedCalledDuringMomentum(true);
     }
   };
+
+  console.log('filteredUsers ' + filteredUsers.length);
+  console.log('users' + users.length);
 
   return (
     <Container>
@@ -92,7 +103,7 @@ export default function MainScreen() {
         onReset={handleReset}
       />
       <UserList
-        data={filteredUsers}
+        data={isInputFilterActive ? filteredUsers : users}
         keyExtractor={(item: User) => item.login.uuid}
         renderItem={({ item }: { item: User }) => <Card data={item} />}
         ListFooterComponent={
