@@ -1,3 +1,4 @@
+import { Platform } from 'react-native';
 import styled from 'styled-components/native';
 
 export const HeaderContainer = styled.View`
@@ -58,3 +59,7 @@ export const ModalTitle = styled.Text`
     font-weight: bold;
     margin-bottom: 10px;
     `;
+
+export const ViewAndroidButtonSeparator = styled.View`
+  ${Platform.OS === 'android' && 'margin-top: 4px;'}
+`;

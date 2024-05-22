@@ -1,6 +1,11 @@
 import React from 'react';
-import { Modal, Button, Text } from 'react-native';
-import { ModalBackground, ModalContent, ModalTitle } from './styles';
+import { Modal, Button } from 'react-native';
+import {
+  ModalBackground,
+  ModalContent,
+  ModalTitle,
+  ViewAndroidButtonSeparator,
+} from './styles';
 
 interface FilterModalProps {
   visible: boolean;
@@ -30,6 +35,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
               onClose();
             }}
           />
+          <ViewAndroidButtonSeparator />
           <Button
             title="Mostrar apenas feminino"
             onPress={() => {
@@ -37,6 +43,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
               onClose();
             }}
           />
+          <ViewAndroidButtonSeparator />
           <Button
             title="Mostrar todos"
             onPress={() => {
@@ -44,6 +51,7 @@ const FilterModal: React.FC<FilterModalProps> = ({
               onClose();
             }}
           />
+          <ViewAndroidButtonSeparator />
           <Button title="Cancelar" onPress={onClose} />
         </ModalContent>
       </ModalBackground>
