@@ -24,6 +24,7 @@ export default function MainScreen() {
     setOnEndReachedCalledDuringMomentum,
   ] = useState(true);
   const [isInputFilterActive, setIsInputFilterActive] = useState(false);
+  const [isEndReachedLoading, setIsEndReachedLoading] = useState(false); // New state
 
   useEffect(() => {
     filterUsers();
@@ -71,16 +72,21 @@ export default function MainScreen() {
   };
 
   const loadMoreUsers = async () => {
+    if (isLoadingMore || isEndReachedLoading) return;
     try {
+      setIsEndReachedLoading(true);
       setIsLoadingMore(true);
       setTimeout(async () => {
         const nextPageUsers = await fetchUsers(currentPage + 1);
         setCurrentPage(currentPage + 1);
         setUsers((prevUsers) => [...prevUsers, ...nextPageUsers]);
+        setIsEndReachedLoading(false);
         setIsLoadingMore(false);
-      }, 3000); // 3 seconds delay to simulate loading and achieve one of the requirements
+      }, 100); // 3 seconds delay to meet requirements,
     } catch (error) {
       console.error('Error fetching more users:', error);
+      setIsEndReachedLoading(false);
+      setIsLoadingMore(false);
     }
   };
 
@@ -91,9 +97,6 @@ export default function MainScreen() {
       !isInputFilterActive && setOnEndReachedCalledDuringMomentum(true);
     }
   };
-
-  console.log('filteredUsers ' + filteredUsers.length);
-  console.log('users' + users.length);
 
   return (
     <Container>
@@ -115,7 +118,7 @@ export default function MainScreen() {
           ) : null
         }
         onEndReached={onEndReached}
-        onEndReachedThreshold={0.5}
+        onEndReachedThreshold={0.1}
         onMomentumScrollBegin={() => setOnEndReachedCalledDuringMomentum(false)}
       />
     </Container>
