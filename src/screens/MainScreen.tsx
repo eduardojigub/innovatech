@@ -82,7 +82,7 @@ export default function MainScreen() {
         setUsers((prevUsers) => [...prevUsers, ...nextPageUsers]);
         setIsEndReachedLoading(false);
         setIsLoadingMore(false);
-      }, 100); // 3 seconds delay to meet requirements,
+      }, 3000); // 3 seconds delay to meet requirements,
     } catch (error) {
       console.error('Error fetching more users:', error);
       setIsEndReachedLoading(false);
