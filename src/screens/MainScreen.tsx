@@ -11,6 +11,7 @@ import {
 } from './styles';
 import { User } from '@interfaces/user';
 import { fetchUsers } from '@utils/api';
+import ListEmptyComponent from '@components/EmptyListComponent';
 
 export default function MainScreen() {
   const { users, currentPage, setCurrentPage, setUsers } = useUserContext();
@@ -116,6 +117,7 @@ export default function MainScreen() {
             </LoadMoreContainer>
           ) : null
         }
+        ListEmptyComponent={<ListEmptyComponent />}
         onEndReached={onEndReached}
         onEndReachedThreshold={0.1}
         onMomentumScrollBegin={() => setOnEndReachedCalledDuringMomentum(false)}
