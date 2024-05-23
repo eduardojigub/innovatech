@@ -59,8 +59,30 @@ https://drive.google.com/file/d/13lHTpDjjCgGAI7mdyQkOIJoTet7pbS-F/view?usp=drive
 ## Project Structure
 
 The project follows this directory structure:
-
-* src: Contains all the source files of the project.
+```bash
+src/
+├── assets/
+│ ├── images/
+│ └── fonts/
+├── components/
+│ ├── Button.tsx
+│ └── Header.tsx
+├── routes/
+│ └── AppNavigator.tsx
+├── screens/
+│ ├── HomeScreen.tsx
+│ ├── MealDetailsScreen.tsx
+│ ├── CreateMealScreen.tsx
+│ └── EditMealScreen.tsx
+├── storage/
+│ └── AsyncStorageManager.ts
+├── theme/
+│ ├── colors.ts
+│ └── fonts.ts
+└── utils/
+├── helpers.ts
+└── constants.ts
+```
 
 
 ## Libraries and Tools Used
