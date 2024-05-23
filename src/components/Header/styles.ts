@@ -1,4 +1,4 @@
-import { Button, TextInput } from "react-native";
+import { Button, TextInput, Platform } from "react-native";
 import styled from "styled-components/native";
 
 
@@ -20,7 +20,7 @@ export const FiltersContainer = styled.View`
 export const HeaderTitle = styled.Text`
    font-size: 20px;
    font-weight: bold;
-   margin-top: 40px;
+   margin-top: ${Platform.OS === 'android' ? '40px' : '16px'};
 `
 
 export const Input = styled(TextInput)`
