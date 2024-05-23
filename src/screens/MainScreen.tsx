@@ -13,8 +13,7 @@ import { User } from '@interfaces/user';
 import { fetchUsers } from '@utils/api';
 
 export default function MainScreen() {
-  const { users, currentPage, setCurrentPage, setUsers, fetchUserData } =
-    useUserContext();
+  const { users, currentPage, setCurrentPage, setUsers } = useUserContext();
   const [filteredUsers, setFilteredUsers] = useState<User[]>(users);
   const [nameFilter, setNameFilter] = useState('');
   const [genderFilter, setGenderFilter] = useState('');
