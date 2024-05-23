@@ -20,6 +20,7 @@ export const FiltersContainer = styled.View`
 export const HeaderTitle = styled.Text`
    font-size: 20px;
    font-weight: bold;
+   margin-top: 40px;
 `
 
 export const Input = styled(TextInput)`

@@ -31,7 +31,6 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
       if (page === 1) {
         // Store data in localStorage if page is 1 as requirement
         AsyncStorage.setItem('cachedUserData', JSON.stringify(fetchedUsers));
-        console.log('Data stored in AsyncStorage:', fetchedUsers);
       }
     } catch (error) {
       console.error('Error fetching users:', error);
