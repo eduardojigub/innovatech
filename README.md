@@ -3,6 +3,8 @@ This repository contains the code for the Innovatech App, developed in React Nat
 It utilizes local storage with the Async Storage library for storing data locally on the device.
 
 ## Screenshots
+![Screens1](https://github.com/eduardojigub/innovatech/assets/47367373/4447bdc0-1173-4557-9522-b64813f6b3e4)
+![Screens2](https://github.com/eduardojigub/innovatech/assets/47367373/660222c4-a696-4a87-8447-13ac352fd51d)
 
 ## Features
 
