@@ -67,23 +67,21 @@ src/
 │ ├── images/
 │ └── fonts/
 ├── components/
-│ ├── Button.tsx
+│ ├── Card.tsx
+│ └── EmptyListComponent.tsx
+│ └── FilterModal.tsx
 │ └── Header.tsx
-├── routes/
-│ └── AppNavigator.tsx
+│ └── UserModal.tsx
+├── context/
+│ ├── UserContext.tsx/
+├── interfaces/
+│ ├── user.ts/
 ├── screens/
-│ ├── HomeScreen.tsx
-│ ├── MealDetailsScreen.tsx
-│ ├── CreateMealScreen.tsx
-│ └── EditMealScreen.tsx
-├── storage/
-│ └── AsyncStorageManager.ts
-├── theme/
-│ ├── colors.ts
-│ └── fonts.ts
+│ ├── MainScreen.tsx
+├── styles/
+│ └── theme.ts
 └── utils/
-├── helpers.ts
-└── constants.ts
+   └── api.ts
 ```
 
 
