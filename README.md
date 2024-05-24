@@ -1,3 +1,8 @@
+# Multilanguage README Pattern
+[![en](https://img.shields.io/badge/lang-en-red.svg)](https://github.com/eduardojigub/innovatech/blob/main/README.md)
+[![pt-br](https://img.shields.io/badge/lang-pt--br-green.svg)](https://github.com/eduardojigub/innovatech/blob/main/README.pt-br.md)
+
+
 <h1 align="center">Innovatech - C2S Challenge</h1>
 This repository contains the code for the Innovatech App, developed in React Native with TypeScript using the Expo Managed Workflow for the challenge proprosed from C2S company. The app allows users to efficiently filter, search and fetch users from randomuser API. 
 It utilizes local storage with the Async Storage library for storing data locally on the device.
