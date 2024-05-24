@@ -56,7 +56,7 @@ npx expo start
 OR - ||
 
 You can also download the apk and install straight to your android phone using this like below:
-https://drive.google.com/file/d/13lHTpDjjCgGAI7mdyQkOIJoTet7pbS-F/view?usp=drive_link
+<a href="https://drive.google.com/file/d/13lHTpDjjCgGAI7mdyQkOIJoTet7pbS-F/view?usp=drive_link">Baixe aqui o APK</a>
 
 ## Project Structure
 
