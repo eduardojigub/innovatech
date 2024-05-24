@@ -90,7 +90,7 @@ export default function MainScreen() {
     }
   };
 
-  //solução retirada de https://stackoverflow.com/questions/47910127/flatlist-calls-onendreached-when-its-rendered
+  //link for the solution https://stackoverflow.com/questions/47910127/flatlist-calls-onendreached-when-its-rendered
   const onEndReached = () => {
     if (!onEndReachedCalledDuringMomentum) {
       !isInputFilterActive && loadMoreUsers();
